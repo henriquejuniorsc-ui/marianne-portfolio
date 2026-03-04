@@ -11,9 +11,10 @@ const stats = [
 
 export default function Hero() {
   return (
-    <section className="relative bg-dark text-white overflow-hidden">
-      {/* Subtle gradient */}
-      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full bg-accent/8 blur-[150px] pointer-events-none" />
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#FCF9F6] via-bg-warm to-bg-warm">
+      {/* Subtle warm ambient orbs */}
+      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[130px] pointer-events-none" />
+      <div className="absolute -top-20 -left-20 w-[320px] h-[320px] rounded-full bg-white/70 blur-[80px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12 pt-36 lg:pt-44 pb-20 lg:pb-28">
         <div className="max-w-3xl">
@@ -35,7 +36,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[0.95] tracking-tight"
+            className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[0.95] tracking-tight text-text"
           >
             <span className="font-sans">Hi, I&apos;m</span>{" "}
             <span className="font-serif text-accent italic">Marianne</span>
@@ -48,14 +49,14 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.35 }}
-            className="mt-8 text-lg lg:text-xl text-white/60 max-w-xl leading-relaxed"
+            className="mt-8 text-lg lg:text-xl text-text-muted max-w-xl leading-relaxed"
           >
             I help B2B companies{" "}
-            <span className="text-white font-semibold">
+            <span className="text-text font-semibold">
               get more qualified leads
             </span>{" "}
             and{" "}
-            <span className="text-white font-semibold">
+            <span className="text-text font-semibold">
               streamline sales operations
             </span>{" "}
             — remotely, from Brazil.
@@ -89,7 +90,7 @@ export default function Hero() {
             </a>
             <a
               href="#experience"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-white/20 text-white font-semibold text-base hover:border-white/50 transition-all hover:-translate-y-1"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-border text-text font-semibold text-base hover:border-accent hover:text-accent transition-all hover:-translate-y-1"
             >
               See My Work
             </a>
@@ -105,10 +106,10 @@ export default function Hero() {
         >
           {stats.map((stat, i) => (
             <div key={i}>
-              <div className="font-sans text-3xl lg:text-4xl font-bold text-white leading-none">
+              <div className="font-serif text-4xl lg:text-5xl font-bold text-accent leading-none">
                 {stat.value}
               </div>
-              <div className="mt-2 text-xs text-white/50 font-medium uppercase tracking-wider">
+              <div className="mt-2 text-xs text-text-muted font-medium uppercase tracking-wider">
                 {stat.label}
               </div>
             </div>

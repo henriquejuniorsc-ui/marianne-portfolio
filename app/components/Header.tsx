@@ -27,14 +27,14 @@ export default function Header() {
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
           ? "bg-white/95 backdrop-blur-xl shadow-sm border-b border-border"
-          : "bg-dark"
+          : "bg-bg-warm/92 backdrop-blur-xl border-b border-border/70"
       }`}
     >
       <nav className="max-w-7xl mx-auto px-6 lg:px-12 h-16 lg:h-20 flex items-center justify-between">
         <a
           href="#"
           className={`font-sans text-lg font-bold tracking-[0.15em] uppercase transition-colors ${
-            scrolled ? "text-text" : "text-white"
+            scrolled ? "text-text" : "text-text"
           }`}
         >
           MARIANNE
@@ -49,7 +49,7 @@ export default function Header() {
                 className={`text-sm font-medium transition-colors ${
                   scrolled
                     ? "text-text-muted hover:text-accent"
-                    : "text-white/70 hover:text-white"
+                    : "text-text-muted hover:text-accent"
                 }`}
               >
                 {link.label}
@@ -73,17 +73,17 @@ export default function Header() {
         >
           <span
             className={`block w-6 h-0.5 transition-all ${
-              scrolled ? "bg-text" : "bg-white"
+              scrolled ? "bg-text" : "bg-text"
             } ${mobileOpen ? "rotate-45 translate-y-2" : ""}`}
           />
           <span
             className={`block w-6 h-0.5 transition-all ${
-              scrolled ? "bg-text" : "bg-white"
+              scrolled ? "bg-text" : "bg-text"
             } ${mobileOpen ? "opacity-0" : ""}`}
           />
           <span
             className={`block w-6 h-0.5 transition-all ${
-              scrolled ? "bg-text" : "bg-white"
+              scrolled ? "bg-text" : "bg-text"
             } ${mobileOpen ? "-rotate-45 -translate-y-2" : ""}`}
           />
         </button>
