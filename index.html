@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marianne Silveira — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F0EB;
+    --text: #1A1A1A;
+    --accent: #C45D3E;
+    --accent-light: #E8A990;
+    --muted: #8A8078;
+    --card: #FFFFFF;
+    --card-border: #E5DDD5;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: white;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 1.25rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(20px);
+    background: rgba(245, 240, 235, 0.85);
+    border-bottom: 1px solid var(--card-border);
+    transition: transform 0.4s ease;
+  }
+  nav .logo {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  nav .logo span { color: var(--accent); }
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+  }
+  nav ul a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  nav ul a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
+    opacity: 0.25;
+    animation: float 8s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-30px, 20px) scale(1.05); }
+  }
+  .hero-tag {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    max-width: 900px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-sub {
+    margin-top: 2rem;
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+  .hero-cta {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    border-radius: 60px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    transition: all 0.35s ease;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+  }
+  .btn-primary:hover {
+    background: #A94E33;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(196, 93, 62, 0.3);
+  }
+  .btn-outline {
+    border: 1.5px solid var(--card-border);
+    background: transparent;
+    color: var(--text);
+  }
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 6rem 3rem;
+  }
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+    max-width: 600px;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 1.75rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+    font-weight: 500;
+  }
+
+  /* ── SERVICES ── */
+  .services-section { background: var(--text); color: white; }
+  .services-section .section-title { color: white; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 2.25rem;
+    transition: all 0.35s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover {
+    background: rgba(255,255,255,0.08);
+    transform: translateY(-4px);
+  }
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(196, 93, 62, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1.25rem;
+  }
+  .service-card h3 {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+  }
+  .service-card p {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.65;
+  }
+
+  /* ── EXPERIENCE ── */
+  .timeline {
+    max-width: 780px;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--card-border);
+  }
+  .timeline-item {
+    padding-left: 3rem;
+    padding-bottom: 3rem;
+    position: relative;
+  }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid var(--bg);
+  }
+  .timeline-date {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .timeline-role {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    margin-bottom: 0.15rem;
+  }
+  .timeline-company {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+  }
+  .timeline-desc {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .timeline-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+  .timeline-tags span {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    background: rgba(196, 93, 62, 0.08);
+    color: var(--accent);
+  }
+
+  /* ── SKILLS ── */
+  .skills-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  .skills-col h3 {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    margin-bottom: 1.5rem;
+  }
+  .skill-bar {
+    margin-bottom: 1.25rem;
+  }
+  .skill-bar-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  .skill-bar-track {
+    height: 6px;
+    border-radius: 10px;
+    background: var(--card-border);
+    overflow: hidden;
+  }
+  .skill-bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .tools-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .tool-tag {
+    padding: 0.5rem 1rem;
+    border-radius: 60px;
+    border: 1px solid var(--card-border);
+    font-size: 0.82rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    background: var(--card);
+  }
+  .tool-tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    text-align: center;
+    padding: 8rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-section::before {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
+    opacity: 0.15;
+  }
+  .contact-section .section-title {
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+    position: relative;
+  }
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 1.75rem;
+    border-radius: 60px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.35s;
+  }
+  .contact-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-top: 1px solid var(--card-border);
+  }
+
+  /* ── SCROLL ANIMATION ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { gap: 1rem; }
+    nav ul a { font-size: 0.75rem; }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .skills-wrap { grid-template-columns: 1fr; }
+    .contact-section { padding: 5rem 1.5rem; }
+  }
+
+  @media (max-width: 480px) {
+    nav ul { display: none; }
+    .about-stats { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">marianne<span>.</span></a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">Virtual Assistant · Sales Support · Content Creator</div>
+  <h1>Hi, I'm <em>Marianne</em> Silveira</h1>
+  <p class="hero-sub">I help businesses grow through strategic prospecting, streamlined operations, and content that converts — all from the beautiful coast of Brazil.</p>
+  <div class="hero-cta">
+    <a href="#contact" class="btn btn-primary">Let's Work Together →</a>
+    <a href="#experience" class="btn btn-outline">View My Work</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <div class="section-label">About Me</div>
+      <h2 class="section-title">Turning leads into <em style="font-family:var(--serif);color:var(--accent);font-style:italic;">opportunities</em></h2>
+      <p>I'm a results-driven Virtual Assistant and Sales Development Representative based in Ilhabela, SP, Brazil. With hands-on experience in B2B prospecting, CRM management, and lead qualification, I help remote teams operate smoothly and hit their targets.</p>
+      <p>Beyond sales, I bring a creative edge — building branded social media content, developing visual identities, and crafting conversion-driven messaging across platforms. I'm fluent in both English and Portuguese, making me the ideal bridge for international teams.</p>
+      <p>Currently preparing for university entrance exams focused on Advertising & Marketing, I'm constantly sharpening my skills at the intersection of sales strategy and creative communication.</p>
+    </div>
+    <div class="about-stats reveal">
+      <div class="stat-card">
+        <div class="stat-num">2+</div>
+        <div class="stat-label">Years of Sales & Support Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Clients Assisted Daily</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Languages (EN / PT)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Remote Work Ready</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services-section">
+  <div class="section-label" style="color:var(--accent-light);">What I Do</div>
+  <h2 class="section-title">Services</h2>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">🎯</div>
+      <h3>B2B Prospecting & Lead Generation</h3>
+      <p>Strategic outbound prospecting, lead qualification using BANT/GPCT frameworks, and pipeline management to keep your sales funnel flowing with high-quality opportunities.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">📊</div>
+      <h3>CRM & Pipeline Management</h3>
+      <p>Expert handling of CRM platforms like Monday and Agendor — maintaining accurate data, organized pipelines, and seamless handoffs to your closing team.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">📧</div>
+      <h3>Email Marketing & Follow-ups</h3>
+      <p>Crafting personalized outreach sequences, managing follow-up cadences, and optimizing response rates to turn cold leads into warm conversations.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🎨</div>
+      <h3>Content Creation & Branding</h3>
+      <p>Visual identity development, social media graphics in Canva, short-form video production, and SEO-optimized captions that drive engagement and conversions.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">📅</div>
+      <h3>Virtual Assistance</h3>
+      <p>Calendar management via Calendly, meeting scheduling, email coordination, spreadsheet management, and daily operational support for remote teams.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">💬</div>
+      <h3>Customer Support</h3>
+      <p>Professional customer communication across digital channels — clear messaging, organized follow-ups, and a focus on satisfaction and retention.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Career Path</div>
+  <h2 class="section-title reveal">Experience</h2>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-date">Jan 2025 — Sep 2025</div>
+      <div class="timeline-role">Sales Development Representative</div>
+      <div class="timeline-company">Rugido Digital Agency · Remote</div>
+      <div class="timeline-desc">Led B2B prospecting and lead qualification for high-performance digital marketing solutions. Maintained CRM systems (Monday, Agendor) with accurate pipeline tracking. Developed personalized outreach targeting decision-makers and structured prospecting workflows that improved team efficiency.</div>
+      <div class="timeline-tags">
+        <span>B2B Sales</span><span>CRM</span><span>Lead Qualification</span><span>Email Marketing</span><span>Calendly</span>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-date">Jul 2024 — Nov 2024</div>
+      <div class="timeline-role">Sales Development Representative</div>
+      <div class="timeline-company">F5 Estratégia · Remote</div>
+      <div class="timeline-desc">Focused on B2B lead prospecting for digital presence and paid traffic strategies. Conducted consultative diagnostics, managed contact cadences, and optimized lead nurturing workflows to improve meeting quality and response time.</div>
+      <div class="timeline-tags">
+        <span>Paid Traffic</span><span>Consultative Sales</span><span>Lead Nurturing</span><span>Prospecting</span>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-date">Jun 2023 — May 2024</div>
+      <div class="timeline-role">Sales Consultant</div>
+      <div class="timeline-company">Ilha Ótica · Ilhabela, SP</div>
+      <div class="timeline-desc">Provided consultative support for high-value optical products, assisting 20+ clients daily. Consistently hit monthly sales targets and managed inventory, scheduling, and customer follow-ups to ensure smooth operations.</div>
+      <div class="timeline-tags">
+        <span>Retail Sales</span><span>Customer Support</span><span>Negotiation</span><span>Retention</span>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-date">2024 — Present</div>
+      <div class="timeline-role">Content Creator</div>
+      <div class="timeline-company">Personal Projects · Remote</div>
+      <div class="timeline-desc">Developed branded visual identities and social media graphics using Canva. Produced short-form video content for Instagram Reels and TikTok with a focus on storytelling and conversion-driven messaging. Applied SEO best practices and analytics to optimize reach.</div>
+      <div class="timeline-tags">
+        <span>Canva</span><span>Video Editing</span><span>Social Media</span><span>SEO</span><span>Branding</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="background:var(--card);border-top:1px solid var(--card-border);border-bottom:1px solid var(--card-border);">
+  <div class="section-label">Expertise</div>
+  <h2 class="section-title reveal">Skills & Tools</h2>
+  <div class="skills-wrap">
+    <div class="skills-col reveal">
+      <h3>Core Skills</h3>
+      <div class="skill-bar">
+        <div class="skill-bar-header"><span>B2B Prospecting & Outbound Sales</span><span>90%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90%"></div></div>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-bar-header"><span>CRM Management</span><span>85%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85%"></div></div>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-bar-header"><span>Lead Qualification (BANT/GPCT)</span><span>85%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85%"></div></div>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-bar-header"><span>Content Creation & Branding</span><span>80%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80%"></div></div>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-bar-header"><span>Social Media Strategy</span><span>80%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80%"></div></div>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-bar-header"><span>Email Marketing</span><span>85%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85%"></div></div>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-bar-header"><span>Customer Communication</span><span>95%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95%"></div></div>
+      </div>
+    </div>
+    <div class="skills-col reveal">
+      <h3>Tools I Work With</h3>
+      <div class="tools-grid">
+        <span class="tool-tag">Monday.com</span>
+        <span class="tool-tag">Agendor</span>
+        <span class="tool-tag">Calendly</span>
+        <span class="tool-tag">Google Workspace</span>
+        <span class="tool-tag">Excel</span>
+        <span class="tool-tag">Google Sheets</span>
+        <span class="tool-tag">Canva</span>
+        <span class="tool-tag">Video Editing</span>
+        <span class="tool-tag">Instagram</span>
+        <span class="tool-tag">TikTok</span>
+        <span class="tool-tag">Email Marketing</span>
+        <span class="tool-tag">Digital Marketing</span>
+        <span class="tool-tag">Paid Traffic</span>
+      </div>
+      <h3 style="margin-top:2.5rem;">Languages</h3>
+      <div style="margin-top:1rem;">
+        <div class="skill-bar">
+          <div class="skill-bar-header"><span>Portuguese</span><span>Native</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="100%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar-header"><span>English</span><span>Advanced</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-label">Get in Touch</div>
+  <h2 class="section-title reveal" style="font-size:clamp(2rem,5vw,4rem);">Let's create something <em style="font-family:var(--serif);color:var(--accent);font-style:italic;">great</em> together.</h2>
+  <p style="color:var(--muted);max-width:480px;margin:0 auto;font-size:1.05rem;position:relative;">I'm available for remote opportunities worldwide. Feel free to reach out — I'd love to hear about your project.</p>
+  <div class="contact-links reveal">
+    <a href="mailto:mariannealegre029@gmail.com" class="contact-link">✉️ mariannealegre029@gmail.com</a>
+    <a href="https://www.linkedin.com/in/marianne-cristine-730a173aa" target="_blank" class="contact-link">🔗 LinkedIn</a>
+    <a href="tel:+5512991947673" class="contact-link">📱 +55 12 99194-7673</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Marianne Silveira. Designed with purpose.</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Skill bar animation
+  const bars = document.querySelectorAll('.skill-bar-fill');
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.width = entry.target.dataset.width;
+      }
+    });
+  }, { threshold: 0.3 });
+  bars.forEach(bar => barObserver.observe(bar));
+</script>
+
+</body>
+</html>
