@@ -26,16 +26,18 @@ export default function Header() {
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-bg/90 backdrop-blur-xl shadow-sm border-b border-border"
-          : "bg-transparent"
+          ? "bg-white/95 backdrop-blur-xl shadow-sm border-b border-border"
+          : "bg-dark"
       }`}
     >
       <nav className="max-w-7xl mx-auto px-6 lg:px-12 h-16 lg:h-20 flex items-center justify-between">
         <a
           href="#"
-          className="font-serif text-2xl font-semibold tracking-tight text-text"
+          className={`font-sans text-lg font-bold tracking-[0.15em] uppercase transition-colors ${
+            scrolled ? "text-text" : "text-white"
+          }`}
         >
-          marianne<span className="text-accent">.</span>
+          MARIANNE
         </a>
 
         {/* Desktop nav */}
@@ -44,7 +46,11 @@ export default function Header() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm font-medium text-text-muted hover:text-accent transition-colors tracking-wide uppercase"
+                className={`text-sm font-medium transition-colors ${
+                  scrolled
+                    ? "text-text-muted hover:text-accent"
+                    : "text-white/70 hover:text-white"
+                }`}
               >
                 {link.label}
               </a>
@@ -66,19 +72,19 @@ export default function Header() {
           aria-label="Toggle menu"
         >
           <span
-            className={`block w-6 h-0.5 bg-text transition-all ${
-              mobileOpen ? "rotate-45 translate-y-2" : ""
-            }`}
+            className={`block w-6 h-0.5 transition-all ${
+              scrolled ? "bg-text" : "bg-white"
+            } ${mobileOpen ? "rotate-45 translate-y-2" : ""}`}
           />
           <span
-            className={`block w-6 h-0.5 bg-text transition-all ${
-              mobileOpen ? "opacity-0" : ""
-            }`}
+            className={`block w-6 h-0.5 transition-all ${
+              scrolled ? "bg-text" : "bg-white"
+            } ${mobileOpen ? "opacity-0" : ""}`}
           />
           <span
-            className={`block w-6 h-0.5 bg-text transition-all ${
-              mobileOpen ? "-rotate-45 -translate-y-2" : ""
-            }`}
+            className={`block w-6 h-0.5 transition-all ${
+              scrolled ? "bg-text" : "bg-white"
+            } ${mobileOpen ? "-rotate-45 -translate-y-2" : ""}`}
           />
         </button>
       </nav>
@@ -90,7 +96,7 @@ export default function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-bg/95 backdrop-blur-xl border-b border-border overflow-hidden"
+            className="md:hidden bg-white border-b border-border overflow-hidden"
           >
             <div className="px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (

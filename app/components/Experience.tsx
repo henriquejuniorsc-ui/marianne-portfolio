@@ -4,61 +4,61 @@ import AnimateIn from "./AnimateIn";
 
 const experiences = [
   {
-    period: "Jan 2025 — Sep 2025",
+    period: "JAN 2025 – SEP 2025",
     role: "Sales Development Representative",
     company: "Rugido Digital Agency",
     location: "Remote",
     highlights: [
-      "Led B2B prospecting and lead qualification for high-performance digital marketing solutions",
-      "Maintained CRM systems (Monday, Agendor) with accurate pipeline tracking and structured workflows",
-      "Developed personalized outreach targeting decision-makers, improving team prospecting efficiency",
+      "Led B2B prospecting and lead qualification for high-performance digital marketing solutions.",
+      "Maintained CRM systems (Monday, Agendor) with accurate pipeline tracking.",
+      "Developed personalized outreach targeting decision-makers, improving prospecting efficiency.",
     ],
-    tools: ["B2B Sales", "CRM", "Lead Qualification", "Email Marketing", "Calendly"],
+    tags: ["CRM", "Lead Qualification", "Email Marketing", "Calendly"],
   },
   {
-    period: "Jul 2024 — Nov 2024",
+    period: "JUL 2024 – NOV 2024",
     role: "Sales Development Representative",
     company: "F5 Estratégia",
     location: "Remote",
     highlights: [
-      "Drove B2B lead prospecting for digital presence and paid traffic strategies",
-      "Conducted consultative diagnostics to qualify high-intent prospects",
-      "Optimized lead nurturing workflows, improving meeting quality and response time",
+      "Focused on B2B lead prospecting for digital presence and paid traffic strategies.",
+      "Conducted consultative diagnostics, identifying client needs and presenting strategic solutions.",
+      "Optimized lead nurturing workflows, improving meeting quality and response time.",
     ],
-    tools: ["Paid Traffic", "Consultative Sales", "Lead Nurturing", "Prospecting"],
+    tags: ["Paid Traffic", "Consultative Sales", "Lead Nurturing", "Prospecting"],
   },
   {
-    period: "Jun 2023 — May 2024",
+    period: "JUN 2023 – MAY 2024",
     role: "Sales Consultant",
     company: "Ilha Ótica",
     location: "Ilhabela, SP",
     highlights: [
-      "Provided consultative support for high-value optical products, assisting 20+ clients daily",
-      "Consistently hit monthly sales targets through relationship-driven selling",
-      "Managed inventory, scheduling, and customer follow-ups for smooth operations",
+      "Provided consultative support for high-value optical products, assisting 20+ clients daily.",
+      "Consistently hit monthly sales targets in a highly competitive retail environment.",
+      "Managed inventory, scheduling, and customer follow-ups to ensure smooth operations.",
     ],
-    tools: ["Retail Sales", "Customer Support", "Negotiation", "Retention"],
+    tags: ["Retail Sales", "Consultative Sales", "Negotiation", "Retention"],
   },
   {
-    period: "2024 — Present",
+    period: "2024 – PRESENT",
     role: "Content Creator",
     company: "Personal Projects",
     location: "Remote",
     highlights: [
-      "Developed branded visual identities and social media graphics using Canva",
-      "Produced short-form video content for Instagram Reels and TikTok focused on conversion",
-      "Applied SEO best practices and analytics to optimize reach and engagement",
+      "Developed branded visual identities and social media graphics using Canva.",
+      "Produced short-form video content for Instagram Reels and TikTok with storytelling focus.",
+      "Applied SEO best practices and analytics to optimize reach and engagement.",
     ],
-    tools: ["Canva", "Video Editing", "Social Media", "SEO", "Branding"],
+    tags: ["Canva", "Video Editing", "SEO", "Branding"],
   },
 ];
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 lg:py-32 bg-bg-alt border-y border-border">
+    <section id="experience" className="py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <AnimateIn>
-          <span className="text-sm font-bold tracking-[0.2em] uppercase text-accent">
+          <span className="text-xs font-bold tracking-[0.2em] uppercase text-text-muted">
             Career Path
           </span>
         </AnimateIn>
@@ -71,9 +71,9 @@ export default function Experience() {
         <div className="mt-16 grid md:grid-cols-2 gap-6">
           {experiences.map((exp, i) => (
             <AnimateIn key={i} delay={i * 0.1}>
-              <div className="group bg-bg rounded-2xl border border-border p-7 lg:p-8 hover:border-accent/30 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5 h-full flex flex-col">
+              <div className="group bg-card rounded-2xl border border-border p-7 lg:p-8 hover:border-accent/30 transition-all hover:-translate-y-1 hover:shadow-lg h-full flex flex-col">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-bold tracking-wider uppercase text-accent bg-accent/8 px-3 py-1.5 rounded-full">
+                  <span className="text-xs font-bold tracking-wider text-accent">
                     {exp.period}
                   </span>
                   <span className="text-xs text-text-muted font-medium">
@@ -100,12 +100,12 @@ export default function Experience() {
                 </ul>
 
                 <div className="flex flex-wrap gap-2 mt-6 pt-5 border-t border-border">
-                  {exp.tools.map((tool) => (
+                  {exp.tags.map((tag) => (
                     <span
-                      key={tool}
-                      className="text-xs font-medium px-2.5 py-1 rounded-full bg-accent/6 text-accent border border-accent/12"
+                      key={tag}
+                      className="text-xs font-medium px-3 py-1 rounded-full border border-border text-tag-text bg-tag-bg"
                     >
-                      {tool}
+                      {tag}
                     </span>
                   ))}
                 </div>

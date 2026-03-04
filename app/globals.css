@@ -1,21 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: "Cormorant Garamond", Georgia, serif;
-  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
 
-  --color-bg: #F8F7F4;
-  --color-bg-alt: #FFFFFF;
+  --color-bg: #FFFFFF;
+  --color-bg-warm: #F5F0EB;
+  --color-bg-card: #FDF8F4;
   --color-text: #1A1A1A;
-  --color-text-muted: #6B7280;
-  --color-accent: #C45D3E;
-  --color-accent-dark: #A94E33;
+  --color-text-muted: #777777;
+  --color-accent: #C4745A;
+  --color-accent-dark: #A85E47;
   --color-accent-light: #E8A990;
-  --color-border: #E5E0DA;
+  --color-green: #22C55E;
+  --color-green-bg: #ECFDF5;
+  --color-border: #E5E7EB;
   --color-card: #FFFFFF;
-  --color-dark: #0F1419;
-  --color-dark-card: #1A2028;
-  --color-dark-border: #2A3038;
+  --color-tag-bg: #F9FAFB;
+  --color-tag-text: #374151;
+  --color-dark: #1A1A1A;
+  --color-dark-muted: #999999;
+  --color-whatsapp: #25D366;
 }
 
 ::selection {

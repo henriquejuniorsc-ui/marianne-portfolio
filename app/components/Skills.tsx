@@ -19,10 +19,10 @@ const categories = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 lg:py-32">
+    <section id="skills" className="py-24 lg:py-32 bg-bg-warm border-t border-border">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <AnimateIn>
-          <span className="text-sm font-bold tracking-[0.2em] uppercase text-accent">
+          <span className="text-xs font-bold tracking-[0.2em] uppercase text-text-muted">
             Expertise
           </span>
         </AnimateIn>

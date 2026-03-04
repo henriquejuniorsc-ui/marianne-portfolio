@@ -5,15 +5,15 @@ import AnimateIn from "./AnimateIn";
 const metrics = [
   {
     label: "Pipeline Efficiency",
-    description: "Streamlined CRM processes and automated outreach sequences for consistent improvement in team productivity.",
+    description: "Structured CRM workflows and pipelines across multiple tools for consistent lead management and follow-through.",
   },
   {
     label: "Lead Qualification",
-    description: "Applied BANT/GPCT frameworks to qualify prospects, ensuring sales teams focus on high-potential opportunities.",
+    description: "Applied BANT/GPCT frameworks to qualify prospects, ensuring the sales team focuses on the highest-value opportunities.",
   },
   {
     label: "Outreach Optimization",
-    description: "Crafted personalized follow-up cadences that improved response rates and meeting conversion.",
+    description: "Crafted personalized outreach cadences that improved response rates and reduced lead-to-meeting conversion times.",
   },
 ];
 
@@ -34,10 +34,10 @@ const tools = [
 
 export default function Results() {
   return (
-    <section id="results" className="py-24 lg:py-32">
+    <section id="results" className="py-24 lg:py-32 border-t border-border">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <AnimateIn>
-          <span className="text-sm font-bold tracking-[0.2em] uppercase text-accent">
+          <span className="text-xs font-bold tracking-[0.2em] uppercase text-text-muted">
             Results & Expertise
           </span>
         </AnimateIn>
@@ -49,17 +49,15 @@ export default function Results() {
         </AnimateIn>
 
         <div className="mt-16 grid lg:grid-cols-2 gap-16">
-          {/* Impact metrics */}
-          <div className="space-y-6">
+          {/* Left — impact metrics */}
+          <div className="space-y-5">
             {metrics.map((m, i) => (
               <AnimateIn key={i} delay={i * 0.1}>
-                <div className="group bg-card rounded-2xl border border-border p-7 hover:border-accent/30 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/5">
+                <div className="group bg-card rounded-2xl border border-border p-7 hover:border-accent/30 transition-all hover:-translate-y-0.5 hover:shadow-lg">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center">
-                      <svg className="w-4 h-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
-                      </svg>
-                    </div>
+                    <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
                     <h3 className="font-semibold text-lg">{m.label}</h3>
                   </div>
                   <p className="text-text-muted text-sm leading-relaxed">
@@ -70,7 +68,7 @@ export default function Results() {
             ))}
           </div>
 
-          {/* Tools & Tech stack */}
+          {/* Right — tools + languages */}
           <AnimateIn delay={0.2} direction="right">
             <div>
               <h3 className="font-serif text-2xl font-semibold mb-8">
@@ -80,7 +78,7 @@ export default function Results() {
                 {tools.map((tool) => (
                   <span
                     key={tool}
-                    className="px-5 py-2.5 rounded-full bg-card border border-border text-sm font-medium hover:border-accent hover:text-accent transition-all hover:-translate-y-0.5 cursor-default"
+                    className="px-4 py-2 rounded-full border border-border text-sm font-medium text-tag-text bg-tag-bg hover:border-accent hover:text-accent transition-all cursor-default"
                   >
                     {tool}
                   </span>
@@ -100,7 +98,7 @@ export default function Results() {
                 <div className="flex-1 bg-card rounded-2xl border border-border p-5 text-center">
                   <div className="text-2xl mb-2">🇺🇸</div>
                   <div className="font-semibold">English</div>
-                  <div className="text-sm text-text-muted mt-1">Advanced / Fluent</div>
+                  <div className="text-sm text-text-muted mt-1">Advanced</div>
                 </div>
               </div>
             </div>
